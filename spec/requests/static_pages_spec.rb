@@ -11,20 +11,24 @@ RSpec.describe "StaticPages", type: :request do
 
   describe "GET /help" do
     it "returns http success" do
-      get "/static_pages/help"
+      get "/help"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "Get /about" do
     it "returns http success" do
-      get "/static_pages/about"
+      get "/about"
       expect(response).to have_http_status(:success)
     end
   end
 
-
-
+  describe "Get /contact" do
+    it "returns http success" do
+      get "/contact"
+      expect(response).to have_http_status(:success)
+    end
+  end
 
 
 end
