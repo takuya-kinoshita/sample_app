@@ -69,5 +69,13 @@ RSpec.describe User, type: :model do
     expect(@user).to_not be_valid
   end
 
+  it "email is unique" do
+    duplicate_user = @user.dup
+    @user.save
+    expect(duplicate_user).to_not be_valid    
+  end
+
+
+
 
 end
