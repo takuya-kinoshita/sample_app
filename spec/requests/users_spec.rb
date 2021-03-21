@@ -8,4 +8,11 @@ RSpec.describe "Users", type: :request do
     end
   end
 
+  describe "POST /new" do
+
+    context "無効なユーザー情報が入力された場合" do
+     it "登録が失敗すること" do
+     end
+   end
+  end
 end
