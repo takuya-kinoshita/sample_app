@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.save
     if @user.save
-      flash[:notice] = "succeeded creating new user!"
+      flash[:success] = "succeeded creating new user!"
       redirect_to @user
     else
       flash.now[:notice] = "failed to crate a new user!"

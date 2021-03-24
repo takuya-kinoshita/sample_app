@@ -8,11 +8,51 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "POST /new" do
+  describe "signup" do
+    before do
+      visit signup_path
+      #let(:submit) { "Create new user"}
+    end
 
     context "無効なユーザー情報が入力された場合" do
+
      it "登録が失敗すること" do
+       user = User.new(first_name: "jiro",
+                       last_name: "yamada",
+                       email: nil,
+                       password: "password",
+                       password_confirmation: "password")
+
+       expect(user).to_not be_valid
+     end
+
+     it "エラーメッセージが表示されること" do
+       user = User.new(first_name: "jiro",
+                       last_name: "yamada",
+                       email: nil,
+                       password: "password",
+                       password_confirmation: "password")
+        user.valid?
+        expect(user.errors[:email]).to include("can't be blank")
      end
    end
+
+    context "有効なユーザー情報が入力された場合" do
+        before do
+          fill_in "First name", with: "yamada"
+	  fill_in "Last name", with: "jiro"
+	  fill_in "Email", with: "fff@gmail.com"
+	  fill_in "Password", with: "password"
+ 	  fill_in "Password confirmation", with: "password"
+        end
+
+      it "登録が成功すること" do
+	expect{ click_button }.to change{User.count}.by(1)
+      end
+    end  
+
   end
 end
+
+
+
