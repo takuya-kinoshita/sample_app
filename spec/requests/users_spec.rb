@@ -49,10 +49,18 @@ RSpec.describe "Users", type: :request do
       it "登録が成功すること" do
 	expect{ click_button }.to change{User.count}.by(1)
       end
+
+      it "ログイン状態に遷移すること" do
+         post '/users', params: { user: { first_name: "takuya", 
+					last_name: "kinoshita",
+					 email: "aaa@gmail.com",
+					 password: "password",
+					password_confirmation: "password" }}
+#        expect{ click_button }.to redirect_to user_path 
+        expect(is_logged_in?).to be_truthy                             
+      end
+
     end  
-
   end
-end
-
-
+end 
 
