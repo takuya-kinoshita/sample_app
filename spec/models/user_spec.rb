@@ -96,4 +96,14 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe "check autheticated method" do
+    it " authenticated? returns false for a user with nil digest" do
+      expect(@user.authenticated?("")).to eq false 
+    end
+  end
+
+
+
+
+
 end
