@@ -62,7 +62,6 @@ RSpec.describe "Sessions", type: :request do
       end
 
       it 'ログアウトが成功すること' do
-        visit root_path
         delete logout_path
 	expect(is_logged_in?).to_not be_truthy
  
@@ -74,7 +73,7 @@ RSpec.describe "Sessions", type: :request do
     before do
 	@user = User.create(first_name: "takuya", 
 				last_name: "kinoshita",
-				email: "xxx@gmail.com",
+				email: "xxx",
 				password: "aaa",
 				password_confirmation: "bbb")
  
@@ -88,22 +87,5 @@ RSpec.describe "Sessions", type: :request do
           expect(is_logged_in?).to_not be_truthy
     end
  end
-
- describe "remember me" do
-   before do
-     @user = User.create(first_name: "takuya", last_name: "kinoshita",email: "ggg@gmail.com", password: "password", password_confirmation: "password")
-
-   end
-   it "remember user data" do
-#    log_in_as(@user, remember_me: '1')
-     post login_path, params: { session: { email: @user.email,
-					password: @user.password,
-					remember_me: '1'}} 
-
-   expect(response.cookies["remember_token"]).to_not eq nil    
-   end
- end
-
-
 end
 
