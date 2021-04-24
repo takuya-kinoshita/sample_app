@@ -35,7 +35,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'sqlite3', '~> 1.4'
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '~> 5.2.0'
 end
 
 group :development do
@@ -55,7 +55,8 @@ group :test do
   gem 'selenium-webdriver'
  # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  gem 'factory_bot_rails'
+
+  gem 'rack_session_access'
 
 end
 
